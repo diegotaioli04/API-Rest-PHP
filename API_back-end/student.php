@@ -23,29 +23,37 @@ switch($method)
     break;
 
   case 'POST':
-  //$entityBody = file_get_contents('php://input');
-  //echo $entityBody;
-  //$students = $students->create("", "", "", "");
+	  $corpo = json_decode(@file_get_contents('php://input'), true);
+	  $a = $corpo['name'];
+	  $b = $corpo['surname'];
+	  $c = $corpo['tax_code'];
+	  $d = $corpo['sidi_code'];
+	  $students = $students->create($a, $b, $c, $d);
 	
     break;
 
   case 'DELETE':
-    /*$id = getID();
+    $id = getID();
 	echo"funziona: ".$id;
 	if (isset($id)){
 		$students = $students->cancel($id);
-	}*/
+	}
 	break;
 
   case 'PUT':
-  
+	$corpo = json_decode(@file_get_contents('php://input'), true);
+	$PK = $corpo['id'];
+	$a = $corpo['name'];
+	$b = $corpo['surname'];
+	$c = $corpo['tax_code'];
+	$d = $corpo['sidi_code'];
+	$students = $students->update($PK, $a, $b, $c, $d);
     // TODO
     break;
 
   default:
     break;
 }
-
 
 function getID() {
     return explode('/', getenv('REQUEST_URI'))[4];

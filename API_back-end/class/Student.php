@@ -50,10 +50,14 @@ class Student
     $stmt->execute();
   }
   
-  public function create($_name, $_surname, $_sidiCode, $_taxCode){
-	  $num = find_max();
-	  $sql = "INSERT INTO student VALUES($num, '$_name', '$_surname', '$_sidiCode', '$_taxCode')";
-	  $sql = "INSERT INTO student VALUES('diego', 'taioli', '12342345', 'BDLSMN05H07Z365P')"; 
+  public function create($a, $b, $c, $d){
+	  $sql = "INSERT INTO student(name, surname, sidi_code, tax_code) VALUES('$a', '$b', '$c', '$d')"; 
+	  $stmt = $this->db->prepare($sql);
+	  $stmt->execute();
+  }
+  
+  public function update($PK, $a, $b, $c, $d){
+	  $sql = "UPDATE student SET id = $PK, name = '$a', surname = '$b', sidi_code = '$c', tax_code = '$d' WHERE id = $PK"; 
 	  $stmt = $this->db->prepare($sql);
 	  $stmt->execute();
   }

@@ -21,8 +21,8 @@ function modifica(id) {
         type: 'put',
         data: JSON.stringify(impiegato),
         contentType: 'application/json',
-        success: function (data, textStatus, jQxhr) {
-            $("#printhere").html(textStatus);
+        success: function (result, textStatus, jQxhr) {
+            $("#printhere").html(result);
         },
         error: function (jQxhr, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -60,11 +60,10 @@ $(document).ready(function() {
         var last = $('#last').val();
         var code = $('#posta').val();
         var tax = $('#telefono').val();
-        var ultimo = $("#c:last").attr("id");
-        ultimo = ultimo+1;
+        /*var ultimo = $("#c:last").attr("id");
+        ultimo = ultimo+1;*/
         var impiegato =
         {
-            "id": 63,
             "name": first,
             "surname": last,
             "sidi_code": code,
