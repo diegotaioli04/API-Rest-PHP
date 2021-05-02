@@ -14,13 +14,10 @@ class Student
     $this->db = $this->db->returnConnection();
   }
 
-  public function find($id){
-    $sql = "SELECT * FROM student WHERE id=$id";
+  public function find($idd){
+    $sql = "SELECT * FROM student WHERE id = ".$idd;
     $stmt = $this->db->prepare($sql);
-    $data = [
-      'id' => $id
-    ];
-    $stmt->execute($data);
+    $stmt->execute();
     $result = $stmt->fetch(\PDO::FETCH_ASSOC);
     return $result;
   }
@@ -44,8 +41,11 @@ class Student
 	 return $num;
   }	  
   
-  public function cancel($id){
-	$sql = "DELETE FROM student WHERE id = $id";
+  public function cancel($idc){
+	$sql = "DELETE FROM student_class WHERE id_student = ".$idc;
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute(); 
+	$sql = "DELETE FROM student WHERE id = ".$idc;
     $stmt = $this->db->prepare($sql);
     $stmt->execute();
   }
@@ -53,6 +53,7 @@ class Student
   public function create($_name, $_surname, $_sidiCode, $_taxCode){
 	  $num = find_max();
 	  $sql = "INSERT INTO student VALUES($num, '$_name', '$_surname', '$_sidiCode', '$_taxCode')";
+	  $sql = "INSERT INTO student VALUES('diego', 'taioli', '12342345', 'BDLSMN05H07Z365P')"; 
 	  $stmt = $this->db->prepare($sql);
 	  $stmt->execute();
   }

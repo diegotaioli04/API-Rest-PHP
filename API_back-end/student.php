@@ -8,43 +8,34 @@ $student = new Student();
 switch($method) 
 {
   case 'GET':
-    /*$id = $_GET['id'];
-	$js_encode = null;
-    if (isset($id)){
+  $id = getID();
+    
+	if (isset($id)){
       $student = $student->find($id);
       $js_encode = json_encode(array('state'=>TRUE, 'student'=>$student),true);
-    }else{*/
+    }
+	else{
       $students = $student->all();
       $js_encode = json_encode(array('state'=>TRUE, 'students'=>$students),true);
-	  header("Content-Type: application/json");
-
-	foreach($arr['students'] as $stud){
-		$name = $stud["name"];
-		$surname = $stud["surname"];
-		$Code = $stud["sidi_code"];
-		$tax = $stud["tax_code"];
-		echo "<div class='row align-items-start'>
-            <div class='col-md-2'> </div>
-            <div class='col-md-1'> <input type='checkbox' /> </div>
-            <div class='col-md-2'> $name $surname </div>
-            <div class='col-md-2'> $Code </div>
-            <div class='col-md-3'> $tax </div>
-            <div class='col-md-1'>
-                <input class='b1' type='button'/> 
-                <input class='b2' type='button' /> 
-            </div>
-            <div class='col-md-1'> </div>";
-	}
+    }
+    header("Content-Type: application/json");
+    echo($js_encode);
     break;
 
   case 'POST':
- 
-    // TODO
+  //$entityBody = file_get_contents('php://input');
+  //echo $entityBody;
+  //$students = $students->create("", "", "", "");
+	
     break;
 
   case 'DELETE':
-    // TODO
-    break;
+    /*$id = getID();
+	echo"funziona: ".$id;
+	if (isset($id)){
+		$students = $students->cancel($id);
+	}*/
+	break;
 
   case 'PUT':
   
@@ -53,6 +44,11 @@ switch($method)
 
   default:
     break;
+}
+
+
+function getID() {
+    return explode('/', getenv('REQUEST_URI'))[4];
 }
 
 ?>
