@@ -1,10 +1,7 @@
-/* https://stackoverflow.com/questions/17650776/add-remove-html-inside-div-using-javascript */
+
 
 function modifica(id) {
-    //$("#printhere").html("funziona: " + id);
     var result = (id).split('i');
-    //alert(result[2]);
-    //$("#printhere").html("modifica: " + result[1]);
     var iden = result[1];
     var impiegato =
         {
@@ -60,8 +57,6 @@ $(document).ready(function() {
         var last = $('#last').val();
         var code = $('#posta').val();
         var tax = $('#telefono').val();
-        /*var ultimo = $("#c:last").attr("id");
-        ultimo = ultimo+1;*/
         var impiegato =
         {
             "name": first,
@@ -75,8 +70,7 @@ $(document).ready(function() {
             data: JSON.stringify(impiegato),
             contentType: 'application/json',
             success: function (result, textstatus, jQxhr) {
-				//var res = JSON.stringify(data);
-				$("#printhere").html("ciao"+result);
+
             }
         });
     });

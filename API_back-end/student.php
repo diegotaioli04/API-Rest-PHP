@@ -28,7 +28,7 @@ switch($method)
 	  $b = $corpo['surname'];
 	  $c = $corpo['tax_code'];
 	  $d = $corpo['sidi_code'];
-	  $students = $students->create($a, $b, $c, $d);
+	  $student->create($a, $b, $c, $d);
 	
     break;
 
@@ -36,7 +36,7 @@ switch($method)
     $id = getID();
 	echo"funziona: ".$id;
 	if (isset($id)){
-		$students = $students->cancel($id);
+		$student->cancel($id);
 	}
 	break;
 
@@ -47,7 +47,7 @@ switch($method)
 	$b = $corpo['surname'];
 	$c = $corpo['tax_code'];
 	$d = $corpo['sidi_code'];
-	$students = $students->update($PK, $a, $b, $c, $d);
+	$student->update($PK, $a, $b, $c, $d);
     // TODO
     break;
 
