@@ -2,7 +2,7 @@
 // Database Connection
 class DBConnection {
     private $_dbHostname = "localhost";
-	private $_dbPort = "3308";
+	private $_dbPort = "3306";
     private $_dbName = "FI_ITIS_MEUCCI";
     private $_dbUsername = "root";
     private $_dbPassword = "";
